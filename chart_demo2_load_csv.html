@@ -1,0 +1,45 @@
+<head>
+  <!-- Plotly.js -->
+   <!--<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>-->
+   <script src="plotly-latest.min.js"></script>
+</head>
+
+<body>
+  <div id="myDiv" style="width: 75%; height: 75%;"><!-- Plotly chart will be drawn inside this DIV --></div>
+  <script>
+  <!-- ENTER JAVASCRIPT CODE HERE -->
+  </script>
+</body>
+
+<script>
+  function makeplot() {
+ 	//Plotly.d3.csv("2014_apple_stock.csv", function(data){ processData(data) } );
+  Plotly.d3.csv("combined_results.csv", function(data){ processData(data) } );
+};
+
+function processData(allRows) {
+
+	//console.log(allRows);
+	var x = [], y = [], standard_deviation = [];
+
+	for (var i=0; i<allRows.length; i++) {
+  		row = allRows[i];
+  		x.push( row['date'] );
+  		y.push( row['LNS14000012'] );
+  	}
+  	//console.log( 'X',x, 'Y',y, 'SD',standard_deviation );
+  	makePlotly( x, y, standard_deviation );
+  }
+
+  function makePlotly( x, y, standard_deviation ){
+  	var plotDiv = document.getElementById("plot");
+  	var traces = [{
+  		x: x,
+  		y: y
+  	}];
+
+  	Plotly.newPlot('myDiv', traces,
+  		{title: 'CSV data'});
+  };
+  makeplot();
+</script>

@@ -1,0 +1,38 @@
+<head>
+  <script src="plotly-latest.min.js"></script>
+</head>
+<body>
+  <div id="graph"></div>
+</body>
+
+
+<script>
+  var years = ['2014', '2015', '2016']
+
+  /*
+  this example from > https://community.plotly.com/t/reading-data-from-csv-into-separate-traces/6787/4
+  sample extract of SalesByDealerByYear.csv
+  dealer,year,sales
+  1,2014,22
+  1,2015,18
+  1,2016,19
+  2,2014,21
+  2,2015,27
+
+  */
+
+  Plotly.d3.csv('SalesByDealerByYear.csv', (err, rows) => {
+    var data = years.map(y => {
+      var d = rows.filter(r => r.year === y)
+
+      return {
+        type: 'line',
+        name: y,
+        x: d.map(r => r.dealer),
+        y: d.map(r => r.sales)
+      }
+    })
+
+    Plotly.newPlot('graph', data)
+  })
+</script>
