@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+<head>
+    <title>Visualisation test</title>
+    <meta charset="utf-8" />
+       <link href="css/c3.min.css" rel="stylesheet" />
+    <script src="js/d3.v5.min.js"></script>
+    <script src="js/c3.min.js"></script>
+</head>
+
+  <body>
+  <p> <b> ----- </b> </p>
+    <div id="chart1"></div>
+    <script>
+    var chart = c3.generate({
+    data: {
+            url: 'data/unemployment_data.csv'
+        },
+       bindto: '#chart1'
+    });
+    </script>
+  <p> ___ </p>
+  </body>
+</html>
