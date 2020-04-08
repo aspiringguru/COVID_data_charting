@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>title</title>
+  </head>
+  <body>
+    <div id="info">start</div>
+    <script>
+      var elem = document.getElementById("info");
+      var timeoutHandle = setTimeout(function () {
+        elem.innerHTML = "one";
+        console.log("setTimeout 1000")
+      }, 1000);
+      var timeoutHandle2 = timeoutHandle = setTimeout(function () {
+        console.log("setTimeout 2000")
+        elem.innerHTML = "two";
+      }, 2000);
+      timeoutHandle3 = setTimeout(function () {
+        console.log("setTimeout 3000")
+        elem.innerHTML = "three";
+      }, 3000);
+      
+    </script>
+  </body>
+</html>

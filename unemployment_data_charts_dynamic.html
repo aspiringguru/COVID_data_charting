@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+<head>
+    <title>Visualisation test</title>
+    <meta charset="utf-8" />
+       <link href="css/c3.min.css" rel="stylesheet" />
+       <!-- custom chart formatting -->
+       <link href="css/c3_bmt.css" rel="stylesheet" />
+       <!-- custom chart formatting -->
+    <script src="js/d3.v5.min.js"></script>
+    <script src="js/c3.min.js"></script>
+</head>
+
+  <body>
+  <p> <b> ----- </b> </p>
+    <div id="chart_title"></div>
+    <div id="chart1"></div>
+    <script>
+      var elem = document.getElementById("chart_title");
+      elem.innerHTML = "Jan 2020"
+      var chart = c3.generate({
+            title: {
+              show: false,
+              text: 'Employment figures',
+              position: 'top-center',   // top-left, top-center and top-right
+              padding: {
+                top: 20,
+                right: 20,
+                bottom: 20,
+                left: 20
+              }
+            },data: {
+              url: 'data/0_test.csv',
+              type: 'bar'
+            },
+            bar: {
+              space: 0.25
+            },
+            bindto: '#chart1',
+            legend: {
+                position: 'right'
+            },
+            transition: {
+                duration: 2000
+            },
+            axis: {
+                x: {
+                  show: false
+                },
+                y: {
+                    max:14,
+                    label: 'Unemployment Rate %',
+                    position: 'outer-middle'
+                }
+            }
+      });
+      setTimeout(function () {
+        console.log("updating data - Feb 2020")
+        elem.innerHTML = "Feb 2020";
+        chart.load({
+            url: 'data/1_test.csv'
+        });
+      }, 4000);
+      setTimeout(function () {
+        console.log("updating data - March 2020")
+        elem.innerHTML = "March 2020";
+        chart.load({
+            url: 'data/2_test.csv'
+        });
+      }, 8000);
+      setTimeout(function(){
+         window.location.reload(1);
+      }, 12000);
+    </script>
+  <p> ___ </p>
+  </body>
+</html>

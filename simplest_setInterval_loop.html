@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>title</title>
+  </head>
+  <body>
+    <div id="info">start</div>
+    <script>
+      var elem = document.getElementById("info");
+      setTimeout(function () {
+         console.log("setTimeout 1000")
+         elem.innerHTML = "setTimeout 1000";
+         setInterval(function () {
+           elem.innerHTML = "setInterval one";
+           console.log("setInterval 1000")
+         }, 4000);
+      }, 1000);
+      setTimeout(function () {
+         console.log("setTimeout 2000")
+         elem.innerHTML = "setTimeout 2000";
+         setInterval(function () {
+           console.log("setInterval 2000")
+           elem.innerHTML = "setInterval two";
+         }, 4000);
+      }, 2000);
+      setTimeout(function () {
+         console.log("setTimeout 3000")
+         elem.innerHTML = "setTimeout 3000";
+         setInterval(function () {
+           console.log("setInterval 3000")
+           elem.innerHTML = "setInterval three";
+         }, 4000);
+      }, 3000);
+
+    </script>
+  </body>
+</html>
