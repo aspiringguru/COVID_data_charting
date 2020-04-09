@@ -7,19 +7,26 @@
   <title>start stop template</title>
   <meta name="description" content="start stop template">
   <meta name="author" content="bmt">
+  <!-- setup your own fontawesome kit. it's free. -->
+  <script src="https://kit.fontawesome.com/32c10aeba4.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-  <button id="myBtn_back1">Back 1</button>
-  <button id="myBtn">start</button>
-  <button id="myBtn_fwd1">Fwd 1</button>
+  <button id="myBtn_back_yr"><i class="fa fa-angle-double-left"></i></button>
+  <button id="myBtn_back1"><i class="fa fa-angle-left"></i></button>
+  <button id="myBtn"><i class="fa fa-play"></i></button>
+  <button id="myBtn_fwd1"><i class="fa fa-angle-right"></i></button>
+  <button id="myBtn_fwd_yr"><i class="fa fa-angle-double-right"></i></button>
+  <!-- https://www.w3schools.com/icons/fontawesome_icons_directional.asp -->
 
   <script>
     var counter = 0
     var running = false
-    var elem_button_back1 = document.getElementById("myBtn_back1");
-    var elem_button       = document.getElementById("myBtn");
-    var elem_button_fwd1  = document.getElementById("myBtn_fwd1");
+    var elem_button         = document.getElementById("myBtn");
+    document.getElementById("myBtn_back_yr").addEventListener("click", function(){
+      console.log("myBtn_back_yr button clicked");
+      counter -= 12;
+    });
     document.getElementById("myBtn_back1").addEventListener("click", function(){
       console.log("myBtn_back1 button clicked");
       counter -= 1;
@@ -28,13 +35,17 @@
       console.log("myBtn_fwd1 button clicked");
       counter += 1;
     });
+    document.getElementById("myBtn_fwd_yr").addEventListener("click", function(){
+      console.log("myBtn_fwd_yr button clicked");
+      counter += 12;
+    });
 
     document.getElementById("myBtn").addEventListener("click", function(){
       running = !running;
       if (running) {
-        elem_button.innerHTML = "stop"
+        elem_button.innerHTML = "<i class='fa fa-stop-circle'></i>"
       } else {
-        elem_button.innerHTML = "start"
+        elem_button.innerHTML = "<i class='fa fa-play'></i>"
       }
       console.log("myBtn button clicked, running=", running);
     });
