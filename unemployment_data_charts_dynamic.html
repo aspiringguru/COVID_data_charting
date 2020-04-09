@@ -15,13 +15,12 @@
   <body>
   <div align="center"><p> <b> Data from https://www.bls.gov/ </b> </p></div>
   <div align="center"><p> <b> Monthly labor data </b> </p></div>
-    <div align="center" id="chart_title"></div>
     <div align="center" id="chart1"></div>
     <div align="center" id="legend_table">
       <table>
           <thead>
               <tr>
-                  <th colspan="3">Chart Legends</th>
+                  <th colspan="3" id="chart_title">Monthly Data</th>
               </tr>
               <tr>
                 <th>Code</th>
@@ -40,7 +39,7 @@
       var elem_table_col3
       var elem = document.getElementById("chart_title");
       var table_body = document.getElementById("table_body");
-      elem.innerHTML = "Jan 2020"
+      elem.innerHTML =  "Monthly Data for : "+"Jan 2020"
 
     d3.csv("data/legend_codes_names.csv").then(function(data_legends) {
       console.log("loading data/legend_codes_names.csv")
@@ -110,7 +109,7 @@
             }
             console.log('LNS14000012', data_month[0]['LNS14000012'])
             //console.log("updating data - using filename: "+filename)
-            elem.innerHTML = dates[counter]['dates'];
+            elem.innerHTML = "Monthly Data for : "+dates[counter]['dates'];
             chart.load({
                 url: filename
             });
