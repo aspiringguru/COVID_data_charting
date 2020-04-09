@@ -36,10 +36,11 @@
 
     <script>
       var dates
+      var months = ['', 'Jan', 'Feb', 'Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
       var elem_table_col3
       var elem = document.getElementById("chart_title");
       var table_body = document.getElementById("table_body");
-      elem.innerHTML =  "Monthly Data for : "+"Jan 2020"
+      elem.innerHTML =  "Monthly Data for : "+months[1]+" 2020"
 
     d3.csv("data/legend_codes_names.csv").then(function(data_legends) {
       console.log("loading data/legend_codes_names.csv")
@@ -109,7 +110,9 @@
             }
             console.log('LNS14000012', data_month[0]['LNS14000012'])
             //console.log("updating data - using filename: "+filename)
-            elem.innerHTML = "Monthly Data for : "+dates[counter]['dates'];
+            var temp = dates[counter]['dates']
+            var month_int = parseInt(temp.slice(-2))
+            elem.innerHTML = "Monthly Data for : "+months[month_int]+" "+dates[counter]['dates'].substring(0,4);
             chart.load({
                 url: filename
             });
