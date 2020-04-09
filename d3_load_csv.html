@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <script src="js/d3.v5.js"></script>
+  </head>
+  <body>
+    <!-- page content -->
+    <script>
+      var dates
+      d3.csv("data/dates.csv").then(function(data) {
+        console.log("data.length:", data.length)
+        console.log(data[0]);
+        console.log(data[1]);
+        dates = data
+        console.log(dates)
+      });
+
+    </script>
+  </body>
+</html>
