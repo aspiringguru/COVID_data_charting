@@ -1,0 +1,50 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>start stop template</title>
+  <meta name="description" content="start stop template">
+  <meta name="author" content="bmt">
+</head>
+
+<body>
+  <button id="myBtn_back1">Back 1</button>
+  <button id="myBtn">start</button>
+  <button id="myBtn_fwd1">Fwd 1</button>
+
+  <script>
+    var counter = 0
+    var running = false
+    var elem_button_back1 = document.getElementById("myBtn_back1");
+    var elem_button       = document.getElementById("myBtn");
+    var elem_button_fwd1  = document.getElementById("myBtn_fwd1");
+    document.getElementById("myBtn_back1").addEventListener("click", function(){
+      console.log("myBtn_back1 button clicked");
+      counter -= 1;
+    });
+    document.getElementById("myBtn_fwd1").addEventListener("click", function(){
+      console.log("myBtn_fwd1 button clicked");
+      counter += 1;
+    });
+
+    document.getElementById("myBtn").addEventListener("click", function(){
+      running = !running;
+      if (running) {
+        elem_button.innerHTML = "stop"
+      } else {
+        elem_button.innerHTML = "start"
+      }
+      console.log("myBtn button clicked, running=", running);
+    });
+    setInterval(function () {
+      console.log("counter", counter)
+      if (running){
+        counter += 1
+      }
+    }, 1000);
+  </script>
+
+</body>
+</html>
